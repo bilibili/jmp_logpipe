@@ -1,0 +1,3 @@
+*.o
+cmdParser.c
+jmp_logpipe
