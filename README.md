@@ -4,7 +4,7 @@ A tool for jumper analyize log and send the command to remove UDP server for adu
 
 ### Usage
 
-ssh xxx | jmp_logpipe -s <target udp ip> -p <target udp port> -H <hostname for logging> -u <username for logging> [-k <pid for kill with found lszrz protocol>] -a
+ssh xxx | jmp_logpipe -s &lt;target udp ip&gt; -p <target udp port&gt; -H <hostname for logging&gt; -u <username for logging&gt; [-k <pid for kill with found lszrz protocol&gt;] -a
 
 ### Options
 
