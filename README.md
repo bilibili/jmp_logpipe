@@ -9,11 +9,17 @@ ssh xxx | jmp_logpipe -s <target udp ip> -p <target udp port> -H <hostname for l
 ### Options
 
   -a, --append              append to the given FILEs, do not overwrite
+
   -i, --ignore-interrupts   ignore interrupt signals
+
   -s, --server              post target ip
+
   -p, --port                post target UDP port
+
   -u, --user                post to target user
+
   -H, --host                post to target host
+
   -k, --kill-pid            badlist command kill process
 
 ### Requirment
