@@ -1,6 +1,6 @@
 # jmp_logpipe
 
-A tool for jumper analyize log and send the command to remove UDP server for adult. And this tool will denied for lszrz protocol to prevent a large log for storage.
+A tool for jumper analyize log and send the command to remove UDP server for aduit. And this tool will denied for lszrz protocol to prevent a large log for storage.
 
 ### Usage
 
