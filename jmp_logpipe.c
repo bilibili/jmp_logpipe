@@ -199,19 +199,22 @@ void parse_line_buffer(char *line_buffer, int bytes_read, char *new_buffer, int 
 				{
 					final_off_t--;
 					if (final_off_t < 0) final_off_t = 0;
-				} else if (new_buffer[j] == '\x9b' || (j < *new_buffer_off - 1 && new_buffer[j] == '\x1b' && (new_buffer[j+1] == '[')))
+        } else if (new_buffer[j] == '\x9b' || (j < *new_buffer_off - 1 && new_buffer[j] == '\x1b' && (new_buffer[j+1] == '[')))
+        {
+          char *p = new_buffer + j + (new_buffer[j] == '\x1b' ? 2 : 1);
+          // printf("offset = %zd\n", p - new_buffer);
+          while (p - new_buffer < *new_buffer_off && *p >= '0' && *p <='?') p++;
+          while (p - new_buffer < *new_buffer_off && (*p == ' ' || *p == '-' || *p == '/')) p++;
+          if (*p >= '@' && *p <= '~')
+          {
+            // printf("skip pos = %zd\n", p - new_buffer);
+            j = p - new_buffer;
+            continue;
+          }
+          final_buff[final_off_t++] = new_buffer[j];
+				} else if (j < *new_buffer_off - 3 && new_buffer[j] == '\x1b' && (new_buffer[j+1] == '('))
 				{
-					char *p = new_buffer + j + (new_buffer[j] == '\x1b' ? 2 : 1);
-					// printf("offset = %zd\n", p - new_buffer);
-					while (p - new_buffer < *new_buffer_off && *p >= '0' && *p <='?') p++;
-					while (p - new_buffer < *new_buffer_off && (*p == ' ' || *p == '-' || *p == '/')) p++;
-					if (*p >= '@' && *p <= '~')
-					{
-						// printf("skip pos = %zd\n", p - new_buffer);
-						j = p - new_buffer;
-						continue;
-					}
-					final_buff[final_off_t++] = new_buffer[j];
+          j += 2;
 				} else if (j < *new_buffer_off - 4 && strncmp(new_buffer + j, "\x1b]0;", 4) == 0)
 				{
 					char *p = new_buffer + j + 4;

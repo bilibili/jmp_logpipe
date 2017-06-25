@@ -47,11 +47,15 @@ int cmd_parseLine(char *p, char *pe, bb_cmdline_t *plog)
 	       // fprintf(stderr, "  workdir: %.*s\n",  plog->workdir_len, plog->workdir);
 	       // fprintf(stderr, "  cmd: %.*s\n",  plog->cmd_len, plog->cmd);
 	if (cs < bbLog_first_final) {
-	    // if (fieldStart != NULL)
+	    if (fieldStart != NULL)
 	    {
 		   // fprintf(stderr, "\033[31mInvalid log fmt:\033[0m %.*s (error: %d %d)\n", (int)(pe-orig_st), orig_st, bbLog_error, bbLog_en_main);
 	    //    fprintf(stderr, " matched to : %.*s  field: %s   fieldStart: %p  success: %d\n",  (int)(pe-p), p, lastAssign, fieldStart, successField);
-	       // fprintf(stderr, " [%.*s]\n",  (int)(pe-orig_st), orig_st);
+	    //    if (plog->workdir != NULL)
+	    //    {
+	    //    	fprintf(stderr, "workdir = %.*s\n", plog->workdir_len, plog->workdir);
+	    //    }
+	    //    fprintf(stderr, " [%.*s]\n",  (int)(pe-orig_st), orig_st);
 	    }
 		return 0;
 	}
