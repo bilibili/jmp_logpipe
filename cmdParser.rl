@@ -34,7 +34,7 @@ int cmd_parseLine(char *p, char *pe, bb_cmdline_t *plog)
 
 		main := space*
 				%markFieldStart ([a-z_A-Z])+ %assignUser "@"
-				%markFieldStart [a-zA-Z_\-]+ %assignHostname ":"
+				%markFieldStart [a-zA-Z_0-9\-]+ %assignHostname ":"
 				%markFieldStart [^#$]+ %assignWorkdir [\#\$] space+
 				%markFieldStart (any - space)+ %assignCmd any* %assignArgs [\r\n]
 				;
